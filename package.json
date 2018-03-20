@@ -1,0 +1,73 @@
+{
+  "name": "Serverless Amazon Alexa",
+  "version": "2.0.0",
+  "description": "A basic template for interacting with Amazon Alexa using Serverless Node.JS",
+  "main": "index.js",
+  "scripts": {
+    "build": "serverless package",
+    "deploy": "AWS_SDK_LOAD_CONFIG=1 AWS_SHARED_CREDENTIALS_FILE=./.aws-credentials NODE_ENV=production serverless deploy --verbose",
+    "invoke:set": "serverless invoke local --function set",
+    "invoke:set:off": "npm run invoke:set -- --path test/event/off.json",
+    "invoke:set:on": "npm run invoke:set -- --path test/event/on.json",
+    "invoke:toggle": "serverless invoke local --function toggle",
+    "test": "standard --fix --verbose | snazzy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheCJGCJG/serverless-amazon-alexa.git"
+  },
+  "keywords": [],
+  "author": "Charles Gillham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheCJGCJG/serverless-amazon-alexa/issues"
+  },
+  "homepage": "https://github.com/TheCJGCJG/serverless-amazon-alexa#readme",
+  "dependencies": {
+    "alexa-sdk": "^1.0.25",
+    "lodash": "^4.17.5",
+    "moment": "^2.21.0",
+    "request": "^2.83.0",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "json-loader": "^0.5.7",
+    "serverless": "^1.26.1",
+    "serverless-webpack": "^5.1.0",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.0",
+    "webpack": "^3.0.0",
+    "webpack-node-externals": "^1.6.0",
+    "yaml-loader": "^0.5.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "6.10.3"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "transform-object-rest-spread",
+        {
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "build"
+    ]
+  }
+}
